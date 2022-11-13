@@ -23,7 +23,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Import Routes
 // Populate once we have created the routes
-import router from "./routes/xxx.routes.server.js";
+import router from "./routes/site.routes.server.js";
 
 // Build the app server
 const app = express();

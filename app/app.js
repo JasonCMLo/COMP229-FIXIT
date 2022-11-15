@@ -26,6 +26,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 // Populate once we have created the routes
 import siterouter from "./routes/site.routes.server.js";
 import usersrouter from "./routes/users.routes.server.js";
+import incidentsrouter from "./routes/incidents.routes.server.js";
 
 // Build the app server
 const app = express();
@@ -68,5 +69,6 @@ app.use(passport.session());
 // Populate once we have routes
 app.use("/", siterouter);
 app.use("/", usersrouter);
+app.use("/", incidentsrouter);
 
 export default app;

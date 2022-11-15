@@ -39,7 +39,9 @@ const app = express();
 //configurarion module
 import { Secret } from "../config/config.js";
 
+//import models 
 import User from "./models/users.js";
+import Incident from "./models/incidents.js";
 
 // Set view engine to EJS
 app.set("views", path.join(__dirname, "/views"));

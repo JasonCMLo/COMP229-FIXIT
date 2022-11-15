@@ -8,20 +8,6 @@ Purpose:
 
 */
 
-export function homePage(req, res, next) {
-  res.render("index", {
-    title: "Fixit Ticketing Service",
-    page: "home",
-  });
-}
-
-export function addTicketsPage(req, res, next) {
-  res.render("index", {
-    title: "Add Ticket",
-    page: "addticket",
-  });
-}
-
 export function contactPage(req, res, next) {
   res.render("index", {
     title: "Contact",

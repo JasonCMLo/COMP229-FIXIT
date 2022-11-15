@@ -19,6 +19,7 @@ import {
 
 const router = Router();
 
+router.get("/", loginPage);
 router.get("/login", loginPage);
 router.post("/login", ProcessLogin);
 router.get("/register", registerPage);

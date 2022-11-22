@@ -15,7 +15,7 @@ export function AddTicketsPage(req, res, next) {
     title: "Add Ticket",
     page: "addticket",
     incidents: {},
-    displayName: UserName(req),
+    displayName: userName(req),
   });
 }
 
@@ -50,7 +50,7 @@ export function DisplayIncidentsEditPage(req, res, next) {
       title: "Edit Incident",
       page: "editincident",
       incidents: Incident,
-      displayName: UserName(req),
+      displayName: userName(req),
     });
   });
 }

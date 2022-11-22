@@ -24,6 +24,6 @@ router.get("/login", loginPage);
 router.post("/login", ProcessLogin);
 router.get("/register", registerPage);
 router.post("/register", ProcessRegister);
-router.get("logout", ProcessLogout);
+router.get("/logout", ProcessLogout);
 
 export default router;

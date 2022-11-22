@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,16 +31,17 @@
       min-height: 100%;
       width: 100%;
       height: auto !important;
-  
 
     }
     </style>
   </head>
   <body>
+    <header>
     <%- include('components/header.ejs') %>
+    </header>
 
     <main><%- include('content/' + page +'.ejs') %></main>
-
+    
     <%- include('components/footer.ejs') %>
   </body>
 </html>

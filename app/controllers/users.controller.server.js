@@ -13,23 +13,25 @@ import router from "../routes/site.routes.server.js";
 import { userName } from "../utils/utils.js";
 
 export function loginPage(req, res, next) {
-  if (!req.users)
+  if (!req.user) {
     res.render("index", {
       title: "Login",
       page: "login",
       messages: req.flash("error"),
-      displayName: userName(req),
+      displayName: userName(req)
     });
-  return res.redirect("/home");
+  }
+  return res.redirect("/");
 }
 export function registerPage(req, res, next) {
-  if (!req.users)
+  if (!req.user) {
     res.render("index", {
       title: "Register",
       page: "register",
       messages: req.flash("register error"),
-      displayName: userName(req),
+      displayName: userName(req)
     });
+  }
 }
 // Process
 

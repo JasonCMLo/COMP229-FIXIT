@@ -58,18 +58,23 @@ export function ProcessLogin(req, res, next) {
   })(req, res, next);
 }
 export function ProcessRegister(req, res, next) {
+
   let newUser = new User({
-    username: req.body.username,
+    username: req.body.firstName + req.body.lastName,
     emailAddress: req.body.emailAddress,
     displayName: req.body.firstName + " " + req.body.lastName,
   });
 
+  console.log(newUser);
+
   User.register(newUser, req.body.password, function (err) {
     if (err) {
+      console.log("Error in registration");
       if (err.name == "UserExistsError") {
         console.error("User Already Exists!");
         req.flash("registerMessage", "register error");
       } else {
+        console.log("Other error");
         console.error(err.name);
         req.flash("registerMessage", "Server Error");
       }
@@ -77,9 +82,13 @@ export function ProcessRegister(req, res, next) {
       return res.redirect("/register");
     }
 
-    return passport.authenticate("local")(req, res, function () {
-      return res.redirect("/home");
-    });
+    console.log("account created");
+    return res.redirect("/");
+
+    // return passport.authenticate("local")(req, res, function () {
+    //   console.log("account created")
+    //   return res.redirect("/home");
+    // });
   });
 }
 

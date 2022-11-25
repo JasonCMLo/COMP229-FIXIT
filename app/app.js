@@ -41,15 +41,30 @@ const db = mongoose.connection;
 db.on("open", () => console.log("Connected to Mongo"));
 db.on("error", () => console.log("Error conencting to mongo"));
 
-// Populate once we have established Mongo
-
-// Authentication
-// Populate once we have an authentication strategy
-//configurarion module
-
 //import models
 import User from "./models/users.js";
 import Incident from "./models/incidents.js";
+
+
+// Authentication
+
+let localStrategy = passportLocal.Strategy;
+
+app.use(
+  session({
+    secret: Secret,
+    saveUninitialized: false,
+    resave:false,
+  })
+)
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 
 // Set view engine to EJS
 app.set("views", path.join(__dirname, "/views"));

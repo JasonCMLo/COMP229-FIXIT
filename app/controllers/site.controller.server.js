@@ -7,8 +7,6 @@ Purpose:
 
 
 */
-import { userName } from "../utils/utils.js";
-
 import incidentsModel from "../models/incidents.js";
 import { userName } from "../utils/utils.js";
 
@@ -38,6 +36,8 @@ export function ticketsPage(req, res, next) {
   res.render("index", {
     title: "Tickets",
     page: "tickets",
+    incidents: incidentsCollection,
+    displayName: userName(req)
   });
   
 });

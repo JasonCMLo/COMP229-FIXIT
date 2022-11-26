@@ -8,6 +8,9 @@ Purpose:
 
 */
 
+import incidentsModel from "../models/incidents.js";
+import { userName } from "../utils/utils.js";
+
 export function contactPage(req, res, next) {
   res.render("index", {
     title: "Contact",
@@ -23,8 +26,18 @@ export function dashboardPage(req, res, next) {
 }
 
 export function ticketsPage(req, res, next) {
+  incidentsModel.find(function(err, incidentsCollection) {
+    if(err){
+      console.error(err);
+      res.end(err);
+    }
+  
   res.render("index", {
     title: "Tickets",
     page: "tickets",
+    incidents: incidentsCollection,
+    displayName: userName(req)
   });
+  
+});
 }

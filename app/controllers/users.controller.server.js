@@ -18,10 +18,10 @@ export function loginPage(req, res, next) {
       title: "Login",
       page: "login",
       messages: req.flash("error"),
-      displayName: userName(req)
+      displayName: userName(req),
     });
   }
-  return res.redirect("/");
+  return res.redirect("/tickets");
 }
 export function registerPage(req, res, next) {
   if (!req.user) {
@@ -29,38 +29,37 @@ export function registerPage(req, res, next) {
       title: "Register",
       page: "register",
       messages: req.flash("register error"),
-      displayName: userName(req)
+      displayName: userName(req),
     });
   }
 }
 // Process
 
 export function ProcessLogin(req, res, next) {
-  passport.authenticate("local", function (err, users, info) {
+  passport.authenticate("local", function (err, user, info) {
     if (err) {
       console.error(err);
       res.end(err);
     }
 
-    if (!users) {
+    if (!user) {
       req.flash("login", "Authentication Error");
       return res.redirect("/login");
     }
 
-    req.logIn(users, function (err) {
+    req.logIn(user, function (err) {
       if (err) {
         console.error(err);
         res.end(err);
       }
 
-      return res.redirect("/");
+      return res.redirect("/tickets");
     });
   })(req, res, next);
 }
 export function ProcessRegister(req, res, next) {
-
   let newUser = new User({
-    username: req.body.firstName + req.body.lastName,
+    username: req.body.username,
     emailAddress: req.body.emailAddress,
     displayName: req.body.firstName + " " + req.body.lastName,
   });

@@ -2,15 +2,16 @@
 <div class="container-fluid p-3 mb-2 bg-light text-dark text-left">
   <div class="row">
     <div class="col-sm-3">
-      <form>
+      <form method="POST">
         <div class="form-group">
           <br />
           <br />
           <h2>Welcome to Fixit. Please login.</h2>
+
           <label for="userName1">User Name</label>
           <input
-            class="form-control form-control-lg"
             type="text"
+            class="form-control"
             id="username"
             name="username"
             required
@@ -30,7 +31,7 @@
             placeholder="Enter your password"
           />
         </div>
-        <button type="button" class="btn">Login</button>
+        <button type="submit" class="btn">Login</button>
       </form>
       <br />
       <p>

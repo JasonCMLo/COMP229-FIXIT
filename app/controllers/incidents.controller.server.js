@@ -15,7 +15,7 @@ export function AddTicketsPage(req, res, next) {
     title: "Add Ticket",
     page: "addticket",
     incidents: {},
-    displayName: "",
+    displayName: userName(req),
   });
 }
 

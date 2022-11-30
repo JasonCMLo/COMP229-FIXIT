@@ -14,7 +14,7 @@ export function contactPage(req, res, next) {
   res.render("index", {
     title: "Contact",
     page: "contact",
-    displayName: "a",
+    displayName: userName(req),
   });
 }
 

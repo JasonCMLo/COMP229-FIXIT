@@ -15,13 +15,14 @@ import { AddTicketsPage,
          DisplayIncidentsEditPage,
          ProcessIncidentsEditPage,
          ProcessIncidentsDeletePage } from "../controllers/incidents.controller.server.js";
+import { AuthGuard } from "../utils/utils.js";
 
 const router = Router();
 
-router.get('/add',AddTicketsPage);
-router.post('/add', ProcessTicketsAddPage);
-router.get('/edit/:id', DisplayIncidentsEditPage);
-router.post('/edit/:id', ProcessIncidentsEditPage);
-router.get('/delete/:id', ProcessIncidentsDeletePage);
+router.get('/add',AuthGuard, AddTicketsPage);
+router.post('/add',AuthGuard, ProcessTicketsAddPage);
+router.get('/edit/:id',AuthGuard, DisplayIncidentsEditPage);
+router.post('/edit/:id',AuthGuard, ProcessIncidentsEditPage);
+router.get('/delete/:id',AuthGuard, ProcessIncidentsDeletePage);
 
 export default router;

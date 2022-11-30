@@ -16,10 +16,12 @@ import {
   ticketsPage,
 } from "../controllers/site.controller.server.js";
 
+import { AuthGuard } from "../utils/utils.js";
+
 const router = Router();
 
 router.get("/contact", contactPage);
-router.get("/dashboard", dashboardPage);
-router.get("/tickets", ticketsPage);
+router.get("/dashboard",AuthGuard, dashboardPage);
+router.get("/tickets",AuthGuard, ticketsPage);
 
 export default router;

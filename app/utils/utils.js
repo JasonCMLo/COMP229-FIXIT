@@ -1,5 +1,6 @@
 export function userName(req) {
   if (req.user) {
+    console.log(req.user.displayName);
     return req.user.displayName;
   }
   return "";

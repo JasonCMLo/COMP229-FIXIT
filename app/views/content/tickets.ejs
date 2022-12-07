@@ -11,6 +11,7 @@
                 <thead class="table-dark">
                     <tr>
                         <th scope="col" class="text-center">#</th>
+                        <th scope = "col">Record Number</th>
                         <th scope="col">Status</th>
                         <th scope="col">Description</th>
                         <th scope="col">Priority</th>
@@ -27,6 +28,7 @@
                     <% for(let count = 0; count < incidents.length; count++) { %>
                         <tr>
                             <th scope="row" class="text-center"><%= count + 1 %></th>
+                            <td><%= incidents[count].recordNumber + "-0000" + count%></td>
                             <td class="ticketOpen">NEW</td>
                             <td><%= incidents[count].description %></td>
                             <td><%= incidents[count].priority %></td>

@@ -21,6 +21,7 @@ export function AddTicketsPage(req, res, next) {
 
 export function ProcessTicketsAddPage(req, res, next) {
   let newIncident = incidentsModel({
+    recordNumber: req.body.recordNumber,
     description: req.body.description,
     priority: req.body.priority,
     narrative: req.body.narrative,
@@ -48,7 +49,7 @@ export function DisplayIncidentsEditPage(req, res, next) {
 
     res.render("index", {
       title: "Edit Incident",
-      page: "editincident",
+      page: "addticket",
       incidents: Incident,
       displayName: userName(req),
     });
@@ -60,6 +61,7 @@ export function ProcessIncidentsEditPage(req, res, next) {
 
   let newIncident = incidentsModel({
     _id: req.body.id,
+    recordNumber: req.body.recordNumber,
     description: req.body.description,
     priority: req.body.priority,
     narrative: req.body.narrative,

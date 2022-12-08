@@ -25,7 +25,7 @@ export function ProcessTicketsAddPage(req, res, next) {
     description: req.body.description,
     priority: req.body.priority,
     narrative: req.body.narrative,
-    customerInformation: req.body.customerInformation,
+    customerInformation: req.body.customerInformation
   });
 
   incidentsModel.create(newIncident, (err, Incident) => {
@@ -65,7 +65,7 @@ export function ProcessIncidentsEditPage(req, res, next) {
     description: req.body.description,
     priority: req.body.priority,
     narrative: req.body.narrative,
-    customerInformation: req.body.customerInformation,
+    customerInformation: req.body.customerInformation
   });
 
   incidentsModel.updateOne({ _id: id }, newIncident, (err, Incident) => {

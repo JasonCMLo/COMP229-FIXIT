@@ -98,14 +98,14 @@ body {
 }
 
 /*animated search bar */
-.searchbar[type="text"] {
+.searchbar[type='text'] {
   width: 130px;
   box-sizing: border-box;
   border: 2px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
   background-color: white;
-  background-image: url("searchicon.png");
+  background-image: url('searchicon.png');
   background-position: 10px 10px;
   background-repeat: no-repeat;
   padding: 12px 20px 12px 40px;
@@ -196,7 +196,7 @@ body {
   margin: 10px 0;
   max-width: 90%;
 }
-.AddTicketContent .inputs input,
+.AddTicketContent .inputs input:not(.form-check-input),
 .AddTicketContent .inputs textarea {
   max-width: 50%;
   min-width: 250px;
@@ -207,6 +207,14 @@ body {
   min-width: 250px;
   margin-bottom: 10px;
   margin-left: 0;
+}
+
+.AddTicketContent .buttons a {
+  text-decoration: none;
+  color: black;
+}
+.AddTicketContent .buttons:hover a {
+  color: white;
 }
 .AddTicketContent .buttons button {
   padding: 8px;
@@ -238,4 +246,32 @@ body {
 .ContactUsContent input,
 .ContactUsContent textarea {
   margin-bottom: 10px;
+}
+
+.priority {
+  display: flex;
+  max-width: 50%;
+  min-width: 250px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.priority-title {
+  margin: 0;
+}
+.priority .checks {
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+}
+.priority .checks > * {
+  margin-left: 10px;
+}
+.priority .form-check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.priority .form-check label {
+  margin: 0 0 0 5px;
 }

@@ -23,18 +23,15 @@
           class="form-control"
           rows="8"
           id="details"
-          placeholder="Please describe the details"
-          name="description"><%= incidents.description %>      
-          </textarea>
-        <textarea
+          placeholder="Please provide the incident short description"
+          name="description"><%= incidents.description %></textarea>
+          <textarea
           class="form-control"
           rows="8"
           id="describe"
           placeholder="Describe the complete incident in chronological order"
           name="narrative"
-        ><%= incidents.narrative %>
-      </textarea
-        >
+        ><%= incidents.narrative %></textarea>
         <div class="priority">
           <p class="priority-title">Incident Priority:</p>
           <div class="checks">
@@ -84,14 +81,44 @@
                 </label>
               <% } %>
             </div>
+
+
           </div>
+          
+
+
         </div>
+        <% if (userType == "Administrator") { %>
+          <div>
+            <br>
+          <label for="status">Change Ticket Status</label>
+          <input list="statusList" id="status" name="status" >
+
+          <datalist id="statusList">
+            <option value="NEW"></option>
+            <option value="OPEN"></option>
+            <option value="IN PROGRESS"></option>
+            <option value="CLOSED"></option>
+          </datalist>
+        </div>
+
+        <% } else { %>
+          <div>
+            <br>
+          <input type="text" name="status" value="<%= incidents.status %>" hidden>
+
+        </div>
+
+        <% } %>
+
+        
         <input
           placeholder="Ticket Date"
           class="form-control"
           type="date"
           value=<%= incidents.recordNumber %>
           name="recordNumber"
+          id = "recordNumber"
         />
       </div>
 

@@ -6,7 +6,8 @@ const IncidentSchema = new Schema({
     description: String,
     priority:  String,
     narrative: String,
-    customerInformation: String
+    customerInformation: String,
+    status: String
 },
 {
     timestamps: true,

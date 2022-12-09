@@ -1,7 +1,15 @@
 export function userName(req) {
   if (req.user) {
-    console.log(req.user.displayName);
-    return req.user.displayName;
+    console.log(req.user._id);
+    return req.user._id;
+  }
+  return "";
+}
+
+export function administrator(req) {
+  if (req.user) {
+    console.log(req.user.userType);
+    return req.user.userType;
   }
   return "";
 }

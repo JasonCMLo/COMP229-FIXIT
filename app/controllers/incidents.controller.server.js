@@ -8,7 +8,7 @@ Purpose:
 */
 
 import incidentsModel from "../models/incidents.js";
-import { userName } from "../utils/utils.js";
+import { administrator, userName } from "../utils/utils.js";
 
 export function AddTicketsPage(req, res, next) {
   res.render("index", {
@@ -16,16 +16,19 @@ export function AddTicketsPage(req, res, next) {
     page: "addticket",
     incidents: {},
     displayName: userName(req),
+    userType: administrator(req) 
   });
 }
 
 export function ProcessTicketsAddPage(req, res, next) {
+
   let newIncident = incidentsModel({
     recordNumber: req.body.recordNumber,
     description: req.body.description,
     priority: req.body.priority,
     narrative: req.body.narrative,
     customerInformation: req.body.customerInformation,
+    status: "NEW"
   });
   incidentsModel.create(newIncident, (err, Incident) => {
     if (err) {
@@ -53,6 +56,8 @@ export function DisplayIncidentsEditPage(req, res, next) {
       page: "addticket",
       incidents: Incident,
       displayName: userName(req),
+      userType: administrator(req) 
+
     });
   });
 }
@@ -60,7 +65,7 @@ export function DisplayIncidentsEditPage(req, res, next) {
 export function ProcessIncidentsEditPage(req, res, next) {
   let id = req.params.id;
 
-  console.log(id);
+  console.log(req.body.status);
 
   let newIncident = incidentsModel({
     _id: id,
@@ -69,7 +74,10 @@ export function ProcessIncidentsEditPage(req, res, next) {
     priority: req.body.priority,
     narrative: req.body.narrative,
     customerInformation: req.body.customerInformation,
+    status: req.body.status
   });
+
+  console.log(newIncident);
 
   incidentsModel.updateOne({ _id: id }, newIncident, (err, Incident) => {
     if (err) {

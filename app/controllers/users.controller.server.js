@@ -66,8 +66,6 @@ export function ProcessRegister(req, res, next) {
     regType = "User";
   }
 
-  console.log(regType);
-
   let newUser = new User({
     username: req.body.username,
     emailAddress: req.body.emailAddress,
@@ -75,9 +73,6 @@ export function ProcessRegister(req, res, next) {
     userType: regType,
   });
 
-  console.log(req.body);
-
-  console.log(newUser);
 
   User.register(newUser, req.body.password, function (err) {
     if (err) {

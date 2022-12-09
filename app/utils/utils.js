@@ -6,7 +6,6 @@ export function userName(req) {
   return "";
 }
 
-
 // Authentication validation
 
 export function AuthGuard(req, res, next) {

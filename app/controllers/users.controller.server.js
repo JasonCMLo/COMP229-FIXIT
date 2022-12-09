@@ -58,11 +58,24 @@ export function ProcessLogin(req, res, next) {
   })(req, res, next);
 }
 export function ProcessRegister(req, res, next) {
+  let regType = "";
+
+  if (req.body.adminUser) {
+    regType = "Administrator";
+  } else {
+    regType = "User";
+  }
+
+  console.log(regType);
+
   let newUser = new User({
     username: req.body.username,
     emailAddress: req.body.emailAddress,
     displayName: req.body.firstName + " " + req.body.lastName,
+    userType: regType,
   });
+
+  console.log(req.body);
 
   console.log(newUser);
 
@@ -84,10 +97,10 @@ export function ProcessRegister(req, res, next) {
     console.log("account created");
     return res.redirect("/");
 
-    // return passport.authenticate("local")(req, res, function () {
-    //   console.log("account created")
-    //   return res.redirect("/home");
-    // });
+    return passport.authenticate("local")(req, res, function () {
+      console.log("account created");
+      return res.redirect("/home");
+    });
   });
 }
 

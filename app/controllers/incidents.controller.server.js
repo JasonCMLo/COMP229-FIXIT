@@ -25,27 +25,28 @@ export function ProcessTicketsAddPage(req, res, next) {
     description: req.body.description,
     priority: req.body.priority,
     narrative: req.body.narrative,
-    customerInformation: req.body.customerInformation
+    customerInformation: req.body.customerInformation,
   });
-
   incidentsModel.create(newIncident, (err, Incident) => {
     if (err) {
       console.error(err);
       res.end(err);
     }
-
     res.redirect("/tickets");
   });
 }
 
 export function DisplayIncidentsEditPage(req, res, next) {
   let id = req.params.id;
+  console.log(id);
 
   incidentsModel.findById(id, (err, Incident) => {
     if (err) {
       console.error(err);
       res.end(err);
     }
+
+    console.log(Incident);
 
     res.render("index", {
       title: "Edit Incident",
@@ -59,13 +60,15 @@ export function DisplayIncidentsEditPage(req, res, next) {
 export function ProcessIncidentsEditPage(req, res, next) {
   let id = req.params.id;
 
+  console.log(id);
+
   let newIncident = incidentsModel({
-    _id: req.body.id,
+    _id: id,
     recordNumber: req.body.recordNumber,
     description: req.body.description,
     priority: req.body.priority,
     narrative: req.body.narrative,
-    customerInformation: req.body.customerInformation
+    customerInformation: req.body.customerInformation,
   });
 
   incidentsModel.updateOne({ _id: id }, newIncident, (err, Incident) => {

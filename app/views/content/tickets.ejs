@@ -29,7 +29,15 @@
                         <tr>
                             <th scope="row" class="text-center"><%= count + 1 %></th>
                             <td><%= incidents[count].recordNumber + "-0000" + count%></td>
-                            <td class="ticketOpen"><%= incidents[count].status %></td>
+                            <% if (incidents[count].status == 'OPEN') { %>
+                            <td class="TicketOpen"><%= incidents[count].status %></td>
+                            <% } else if (incidents[count].status == 'IN PROGRESS') { %>
+                            <td class="TicketWaiting"><%= incidents[count].status %></td>
+                            <% } else if (incidents[count].status == 'CLOSED') { %>
+                            <td class="TicketResolved"><%= incidents[count].status %></td>
+                            <% } else if (incidents[count].status == 'NEW') { %>
+                            <td class ="TicketNew"><%= incidents[count].status %></td>
+                            <% } %>
                             <td><%= incidents[count].description %></td>
                             <td><%= incidents[count].priority %></td>
                             <td><%= incidents[count].narrative %></td>

@@ -114,6 +114,20 @@ body {
 
 /* Tickets List table Ticket Status column styles */
 
+.TicketNew {
+  padding: 12px;
+  border-radius: 4px;
+  background-color: #7858fc;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
 .TicketWaiting {
   padding: 12px;
   border-radius: 4px;

@@ -126,9 +126,19 @@
         </div>
         <% } %>
 
-       
-
         
+        <textarea
+          class="form-control"
+          rows="8"
+          id="resolutionInformation"
+          placeholder="Please provide the Resolution Information when closing the ticket"
+          name="resolutionInformation"
+          <% if (incidents.resolutionInformation) { %>
+            readonly
+          <% } %>
+          ><%= incidents.resolutionInformation%></textarea>
+
+       
         <input
           placeholder="Ticket Date"
           class="form-control"
@@ -153,9 +163,11 @@
               Cancel
             </button>
           </div>
+          <% if (incidents.status != "CLOSED") { %>
           <div class="col-xs-8 submit">
             <button type="submit" class="btn">Submit</button>
           </div>
+          <% } %>
         </div>
       </div>
     </form>

@@ -5,6 +5,13 @@ File name: incidents.controller.server.js
 Purpose: 
   Controllers for incidents - creation, deletion, editting, etc
 
+Group Members:
+  Jason Lo - 301234232
+  Elif Canatan - 30145216
+  KD Aklilu - 301220233 
+  Amina Shariff - 301237959
+  Khaled Alrusan - UNKNOWN ID
+
 */
 
 import incidentsModel from "../models/incidents.js";
@@ -110,16 +117,37 @@ New Status: ${req.body.status}
     status: req.body.status
   });
 
-  console.log(newIncident);
 
-  incidentsModel.updateOne({ _id: id }, newIncident, (err, Incident) => {
-    if (err) {
-      console.error(err);
-      res.end(err);
+  if (req.body.status == "CLOSED") {
+    if (req.body.resolutionInformation) {
+      newIncident.resolutionInformation = req.body.resolutionInformation;
+
+      incidentsModel.updateOne({ _id: id }, newIncident, (err, Incident) => {
+        if (err) {
+          console.error(err);
+          res.end(err);
+        }
+    
+        res.redirect("/tickets");
+      });
+
+    } else {
+      // This is poor UX, with more time, we can make this trigger an alert message to remind the user to enter in their details      
+
     }
+  } else {
+    incidentsModel.updateOne({ _id: id }, newIncident, (err, Incident) => {
+      if (err) {
+        console.error(err);
+        res.end(err);
+      }
+  
+      res.redirect("/tickets");
+    });
+  }
+  
 
-    res.redirect("/tickets");
-  });
+
 }
 
 export function ProcessIncidentsDeletePage(req, res, next) {

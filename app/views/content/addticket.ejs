@@ -88,7 +88,8 @@
 
 
         </div>
-        <% if (userType == "Administrator") { %>
+        <% if (userType == "Administrator" && incidents._id) { %>
+        
           <div>
             <br>
           <label for="status">Change Ticket Status</label>

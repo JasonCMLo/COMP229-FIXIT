@@ -27,6 +27,9 @@ export function dashboardPage(req, res, next) {
 }
 
 export function ticketsPage(req, res, next) {
+
+  let viewMode = req.params.view;
+
   incidentsModel.find(function(err, incidentsCollection) {
     if(err){
       console.error(err);
@@ -37,7 +40,8 @@ export function ticketsPage(req, res, next) {
     title: "Tickets",
     page: "tickets",
     incidents: incidentsCollection,
-    displayName: userName(req)
+    displayName: userName(req),
+    view: viewMode
   });
   
 });

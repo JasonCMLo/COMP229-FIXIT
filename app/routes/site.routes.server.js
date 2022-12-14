@@ -22,6 +22,6 @@ const router = Router();
 
 router.get("/contact", contactPage);
 router.get("/dashboard",AuthGuard, dashboardPage);
-router.get("/tickets",AuthGuard, ticketsPage);
+router.get("/tickets/:view",AuthGuard, ticketsPage);
 
 export default router;

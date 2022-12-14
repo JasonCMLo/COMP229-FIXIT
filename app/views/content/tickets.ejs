@@ -1,8 +1,16 @@
 <div class="container">
     <h1>Incident Ticket List</h1>
-    <p><b>Filter by :  &nbsp; &nbsp; status &nbsp; &nbsp;  priority </b></p>
+
     <a href="/add" class="btn" role="button" style ="width:fit-content">
         Add an incident</a>
+    
+    <% if (view == "all") { %>
+        <a href="/tickets/nc" class="btn" role="button" style="width: fit-content">Show only Open Incidents</a>
+
+    <% } else { %>
+        <a href="/tickets/all" class="btn" role="button" style="width: fit-content">Show all incidents</a>
+
+    <% } %>
 
     <div class="row">
         <div class="col">
@@ -26,6 +34,10 @@
                 <tbody id="ticketsList">
                     <!-- Repeatable Rows -->
                     <% for(let count = 0; count < incidents.length; count++) { %>
+                        <% if (view != "all" && incidents[count].status == "CLOSED") { %>
+                        
+                        <% } else { %>
+
                         <tr>
                             <th scope="row" class="text-center"><%= count + 1 %></th>
                             <td><%= incidents[count].recordNumber + "-0000" + count%></td>
@@ -57,7 +69,7 @@
 
                             
                         </tr>
-                    <% } %>
+                    <% } } %>
                 </tbody>
             </table>
         </div>

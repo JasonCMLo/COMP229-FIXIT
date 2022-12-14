@@ -77,7 +77,7 @@ export function ProcessLogin(req, res, next) {
         res.end(err);
       }
 
-      return res.redirect("/tickets");
+      return res.redirect("/tickets/nc");
     });
   })(req, res, next);
 }

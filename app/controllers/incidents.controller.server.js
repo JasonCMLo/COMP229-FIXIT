@@ -22,11 +22,27 @@ export function AddTicketsPage(req, res, next) {
 
 export function ProcessTicketsAddPage(req, res, next) {
 
+  let today = new Date().toLocaleDateString(undefined, {
+    day:   '2-digit',
+    month: '2-digit',
+    year:  'numeric',
+});
+
+let narrativeUpdate = 
+`
+
+INCIDENT CREATED ON: ${today}
+New Description: ${req.body.description}
+New Priority: ${req.body.priority}
+New Customer Information: ${req.body.customerInformation}
+New Status: ${req.body.status}
+`
+
   let newIncident = incidentsModel({
     recordNumber: req.body.recordNumber,
     description: req.body.description,
     priority: req.body.priority,
-    narrative: req.body.narrative,
+    narrative: narrativeUpdate,
     customerInformation: req.body.customerInformation,
     status: "NEW"
   });
@@ -65,6 +81,23 @@ export function DisplayIncidentsEditPage(req, res, next) {
 export function ProcessIncidentsEditPage(req, res, next) {
   let id = req.params.id;
 
+  let today = new Date().toLocaleDateString(undefined, {
+    day:   '2-digit',
+    month: '2-digit',
+    year:  'numeric',
+});
+
+  let narrativeUpdate = 
+  `
+  
+UPDATE ON: ${today} of ${req.body.recordNumber}
+ID: ${id}
+New Description: ${req.body.description}
+New Priority: ${req.body.priority}
+New Customer Information: ${req.body.customerInformation}
+New Status: ${req.body.status}
+`
+
   console.log(req.body.status);
 
   let newIncident = incidentsModel({
@@ -72,7 +105,7 @@ export function ProcessIncidentsEditPage(req, res, next) {
     recordNumber: req.body.recordNumber,
     description: req.body.description,
     priority: req.body.priority,
-    narrative: req.body.narrative,
+    narrative: req.body.narrative + narrativeUpdate,
     customerInformation: req.body.customerInformation,
     status: req.body.status
   });

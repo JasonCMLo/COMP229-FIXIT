@@ -5,7 +5,6 @@
     </div>
     <form class="form" method="POST">
       <div class="col-xs-12 inputs">
-        <label for="incidentID">Incident ID</label>
         <input 
           type="text"
           hidden
@@ -113,7 +112,7 @@
             <input list="statusList" id="status" name="status" placeholder="CLOSED">
 
           <% } else { %>
-            <input list="statusList" id="status" name="status" placeholder="<%=incidents.status%>">
+            <input list="statusList" id="status" name="status" >
 
             <datalist id="statusList">
               <option value="NEW"></option>
@@ -126,6 +125,9 @@
           <% } %>
         </div>
         <% } %>
+
+       
+
         
         <input
           placeholder="Ticket Date"

@@ -97,7 +97,7 @@ export function ProcessIncidentsEditPage(req, res, next) {
   let narrativeUpdate = 
   `
   
-UPDATE ON: ${today} of ${req.body.recordNumber}
+UPDATE ON: ${today}
 ID: ${id}
 New Description: ${req.body.description}
 New Priority: ${req.body.priority}

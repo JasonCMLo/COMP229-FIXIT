@@ -126,7 +126,7 @@
         </div>
         <% } %>
 
-        
+        <label for="resolutionInformation">Resolution Information</label>
         <textarea
           class="form-control"
           rows="8"
@@ -146,7 +146,7 @@
           value="<%= incidents.recordNumber %>"
           name="recordNumber"
           id = "recordNumber"
-          <% if (incidents.status == "CLOSED") { %>
+          <% if (incidents.status) { %>
             readonly
           <% } %>
         />

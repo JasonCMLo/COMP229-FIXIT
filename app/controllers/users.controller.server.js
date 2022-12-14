@@ -33,6 +33,30 @@ export function registerPage(req, res, next) {
     });
   }
 }
+
+export function accountManagementPage(req, res, next) {
+
+  let id = req.params.id;
+
+  console.log(id);
+
+  User.findById(id, (err, user) => {
+    if (err) {
+      console.error(err);
+      res.end(err);
+    }
+    res.render("index", {
+      title: "Account Management",
+      page: "modifyuser",
+      messages: req.flash("error"),
+      displayName: userName(req),
+      account: user
+    })
+
+  })
+
+
+}
 // Process
 
 export function ProcessLogin(req, res, next) {
@@ -59,6 +83,8 @@ export function ProcessLogin(req, res, next) {
 }
 export function ProcessRegister(req, res, next) {
   let regType = "";
+
+  console.log(req.body);
 
   if (req.body.adminUser) {
     regType = "Administrator";
@@ -110,4 +136,33 @@ export function ProcessLogout(req, res, next) {
   });
 
   res.redirect("/login");
+}
+
+
+export function ProcessAccountManagement(req, res, next) {
+  let id = req.params.id;
+
+  console.log(req.body);
+
+  console.log(id);
+
+  let newUser = User({
+    _id: id,
+    displayName: req.body.displayName,
+    userName: req.body.userName,
+    emailAddress: req.body.Email
+    
+  });
+
+  console.log(newUser);
+
+  User.updateOne({ _id: id }, newUser, (err, user) => {
+    if (err) {
+      console.error(err);
+      res.end(err);
+    }
+
+    res.redirect("/tickets");
+
+  })
 }

@@ -17,6 +17,7 @@
 
           <li><a href="/register"><p class="links">Register</p></a></li>
 
+          
           <%} else { %>
 
           <li><a href="/tickets"><p class="links">Tickets List</p></a></li>
@@ -24,6 +25,8 @@
           <li><a href="/add"><p class="links">Add Ticket</p></a></li>
 
           <li><a href="/logout"><p class="links">Logout</p></a></li>
+
+          <li><a href="/accountmanagement/<%= displayName %>"><p class="links">Account Management</p></a></li>
           <% } %>
     
           <li><a href="/contact"><p class="links">Contact</p></a></li>

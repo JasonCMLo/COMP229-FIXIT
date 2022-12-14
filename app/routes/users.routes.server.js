@@ -10,7 +10,9 @@ Purpose:
 import { Router } from "express";
 
 import {
+  accountManagementPage,
   loginPage,
+  ProcessAccountManagement,
   ProcessLogin,
   ProcessLogout,
   ProcessRegister,
@@ -20,6 +22,8 @@ import {
 const router = Router();
 
 router.get("/", loginPage);
+router.get("/accountmanagement/:id",accountManagementPage);
+router.post("/accountmanagement/:id",ProcessAccountManagement);
 router.post("/", ProcessLogin);
 router.get("/login", loginPage);
 router.post("/login", ProcessLogin);

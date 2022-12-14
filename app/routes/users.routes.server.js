@@ -5,7 +5,14 @@ File name: users.routes.server.js
 Purpose: 
   All the routes related to the users controller
   This will manage handling around users
-
+  
+  
+  Group Members:
+  Jason Lo - 301234232
+  Elif Canatan - 30145216
+  KD Aklilu - 301220233 
+  Amina Shariff - 301237959
+  Khaled Alrusan - UNKNOWN ID
 */
 import { Router } from "express";
 

@@ -6,6 +6,13 @@ Purpose:
   All the routes related to the incidents controller
   This will manage incidents
 
+    Group Members:
+  Jason Lo - 301234232
+  Elif Canatan - 30145216
+  KD Aklilu - 301220233 
+  Amina Shariff - 301237959
+  Khaled Alrusan - UNKNOWN ID
+
 */
 
 import { Router } from "express";

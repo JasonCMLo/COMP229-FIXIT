@@ -5,6 +5,13 @@ File name: users.controller.server.js
 Purpose: 
   Controllers for users - creation, deletion, editting, etc
 
+  Group Members:
+  Jason Lo - 301234232
+  Elif Canatan - 30145216
+  KD Aklilu - 301220233 
+  Amina Shariff - 301237959
+  Khaled Alrusan - UNKNOWN ID
+
 */
 import express from "express";
 import passport from "passport";

@@ -8,7 +8,7 @@ Purpose:
 
 */
 import incidentsModel from "../models/incidents.js";
-import { userName } from "../utils/utils.js";
+import { userName, administrator } from "../utils/utils.js";
 
 export function contactPage(req, res, next) {
   res.render("index", {
@@ -41,7 +41,9 @@ export function ticketsPage(req, res, next) {
     page: "tickets",
     incidents: incidentsCollection,
     displayName: userName(req),
-    view: viewMode
+    view: viewMode,
+    userType: administrator(req) 
+
   });
   
 });

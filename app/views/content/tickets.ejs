@@ -61,11 +61,15 @@
                                 <a href="/edit/<%= incidents[count]._id %>"
                                     class="btn"> Edit</a>
                             </td>
+
+                            <% if (userType == "Administrator") { %>
                             
                             <td class="text-center col-1">
                                 <a href="/delete/<%= incidents[count]._id %>"
                                     class="btn">Delete</a>
                             </td>
+
+                            <% } %>
 
                             
                         </tr>

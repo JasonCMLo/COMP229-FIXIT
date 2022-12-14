@@ -24,4 +24,6 @@ router.get("/contact", contactPage);
 router.get("/dashboard",AuthGuard, dashboardPage);
 router.get("/tickets/:view",AuthGuard, ticketsPage);
 
+router.get("/tickets",AuthGuard, ticketsPage);
+
 export default router;

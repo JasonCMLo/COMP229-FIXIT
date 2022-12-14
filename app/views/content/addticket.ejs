@@ -5,11 +5,15 @@
     </div>
     <form class="form" method="POST">
       <div class="col-xs-12 inputs">
+        <label for="incidentID">Incident ID</label>
         <input 
           type="text"
           hidden
           name="incidentID"
-          value="<%= incidents._id %>"/>
+          value="<%= incidents._id %>"
+          readonly/>
+
+        <label for="Customer Information">Customer Information</label>
         <input
           type="text"
           class="form-control"
@@ -18,19 +22,31 @@
           aria-describedby="basic-addon1"
           value="<%= incidents.customerInformation %>"
           name="customerInformation"
+          <% if (incidents.status == "CLOSED") { %>
+            readonly
+          <% } %>
         />
+
+        <label for="Description">Description</label>
         <textarea
           class="form-control"
           rows="8"
           id="details"
           placeholder="Please provide the incident short description"
-          name="description"><%= incidents.description %></textarea>
+          name="description"
+          <% if (incidents.status == "CLOSED") { %>
+            readonly
+          <% } %>
+          ><%= incidents.description %></textarea>
+
+          <label for="Description">Incident Narrative</label>
           <textarea
           class="form-control"
           rows="8"
           id="describe"
           placeholder="Describe the complete incident in chronological order"
           name="narrative"
+          readonly
         ><%= incidents.narrative %></textarea>
         <div class="priority">
           <p class="priority-title">Incident Priority:</p>
@@ -88,30 +104,28 @@
 
 
         </div>
-        <% if (userType == "Administrator" && incidents._id) { %>
+        <% if (incidents._id) { %>
         
           <div>
             <br>
           <label for="status">Change Ticket Status</label>
-          <input list="statusList" id="status" name="status" >
+          <% if (incidents.status == "CLOSED") { %>
+            <input list="statusList" id="status" name="status" placeholder="CLOSED">
 
-          <datalist id="statusList">
-            <option value="NEW"></option>
-            <option value="OPEN"></option>
-            <option value="IN PROGRESS"></option>
-            <option value="CLOSED"></option>
-          </datalist>
+          <% } else { %>
+            <input list="statusList" id="status" name="status" placeholder="<%=incidents.status%>">
+
+            <datalist id="statusList">
+              <option value="NEW"></option>
+              <option value="OPEN"></option>
+              <option value="IN PROGRESS"></option>
+              <option value="CLOSED"></option>
+            </datalist>
+
+
+          <% } %>
         </div>
-
-        <% } else { %>
-          <div>
-            <br>
-          <input type="text" name="status" value="<%= incidents.status %>" hidden>
-
-        </div>
-
         <% } %>
-
         
         <input
           placeholder="Ticket Date"
@@ -120,6 +134,9 @@
           value="<%= incidents.recordNumber %>"
           name="recordNumber"
           id = "recordNumber"
+          <% if (incidents.status == "CLOSED") { %>
+            readonly
+          <% } %>
         />
       </div>
 
@@ -129,7 +146,7 @@
             <button
               type="button"
               class="btn2"
-              onclick="location.href = '/tickets';"
+              onclick="location.href = '/tickets/nc';"
             >
               Cancel
             </button>
